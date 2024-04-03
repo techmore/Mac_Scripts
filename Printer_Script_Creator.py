@@ -5,9 +5,6 @@ import datetime
 import argparse
 
 # This script generates a .csv and .sh. If you run the SH script it will install the printers. You can also edit the CSV and remove Yes to have the script query the printer for the correct driver to have the image appear better.
-# Use Platypus to turn this into an app
-
-
 
 def run_command(command):
     result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -56,6 +53,8 @@ def generate_installer_script(csv_file, script_file):
                 increment += 1
 
         command = '# hdiutil create -volname Printers_Installer.app/ -srcfolder ~/Desktop/Printers_Installer.app  -ov -format UDZO "Printers_Installer.dmg"'
+        script.write(command)
+        command = '# https://previews.123rf.com/images/alexaicons/alexaicons1604/alexaicons160400003/55741486-man-using-a-photocopy-machine-concept-illustration-icon-teacher-make-copies-concept-illustration.jpg'
         script.write(command)
     
     print(f"Script '{script_file}' generated successfully!")
